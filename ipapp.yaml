@@ -32,7 +32,7 @@ spec:
     app: ip-app-pod
   ports:
   - name: http
-    port: 30002
+    port: 30003
     targetPort: 8085
     nodePort: 30008
 
