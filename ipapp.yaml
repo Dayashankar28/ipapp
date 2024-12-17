@@ -25,7 +25,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: my-ip=appnodeport
+  name: my-ip-app-nodeport
 spec:
   type: NodePort
   selector:
