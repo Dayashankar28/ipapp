@@ -2,21 +2,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: iapp-deployment
+  name: iapp-deployment-test
 spec:
   replicas: 4
   selector:
     matchLabels:
-      app: ip-app
+      app: ip-app-pod
 
   template:
     metadata:
       labels:
-        app: ip-app
+        app: ip-app-pod
 
     spec:
       containers:
-      - name: ip-app
+      - name: ip-app-container
         image: daya28/myapp:v2
         ports:
         - containerPort: 8085
@@ -25,27 +25,27 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: mynodeport
+  name: my-ip=appnodeport
 spec:
   type: NodePort
   selector:
-    app: ip-app
+    app: ip-app-pod
   ports:
   - name: http
     port: 30002
     targetPort: 8085
-    nodePort: 30005
+    nodePort: 30008
 
 ---
 
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: allow-ingress-for-pods
+  name: allow-ingress-for-app-pods
 spec:
   podSelector:
     matchLabels:
-      app: ip-app
+      app: ip-app-pod
   policyTypes:
   - Ingress
   ingress:
