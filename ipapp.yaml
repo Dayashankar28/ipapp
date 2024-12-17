@@ -16,7 +16,7 @@ spec:
 
     spec:
       containers:
-      - name: ip-app-container
+      - name: ip-app-pod
         image: daya28/myapp:v2
         ports:
         - containerPort: 8085
@@ -25,7 +25,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: my-ip-app-nodeport
+  name: ip-app-nodeport
 spec:
   type: NodePort
   selector:
